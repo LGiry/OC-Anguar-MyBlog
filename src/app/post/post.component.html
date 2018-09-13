@@ -1,0 +1,15 @@
+<li [ngClass]="{'list-group-item': true,
+                'list-group-item-success': postNbLike > 0,
+                'list-group-item-danger': postNbLike < 0}">
+  <div>
+    <h2 [ngStyle]="{'color': getColor() || 'black', 'width' : '50%', 'display' : 'inline-block'}"> {{ postTitle }} </h2>
+    <p style="font-style:italic;color: grey;width: 50%;text-align:  right;display:  inline-block;"> Date de création : {{ postCreated_at | date:'short'}} </p>
+  </div>
+  <p> {{ postDescription }} </p>
+  <button class="btn btn-success" style="margin:2px" (click)="addLike()" >
+    Love it <span *ngIf="postNbLike > 0"> ({{ postNbLike }}) </span>
+  </button>
+  <button class="btn btn-danger" style="margin:2px" (click)="removeLike()">
+    Don't love it <span *ngIf="postNbLike < 0"> ({{ postNbLike }}) </span>
+  </button>
+</li>
